@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kube-bar-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kube-bar-app
+  template:
+    metadata:
+      labels:
+        app: kube-bar-app
+    spec:
+      containers:
+        - name: kube-bar-app
+          image: ssporyshev/bar:v2
+          ports:
+          - containerPort: 3002
+            protocol: TCP
